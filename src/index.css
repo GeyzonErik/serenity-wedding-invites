@@ -8,33 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Romantic Wedding Palette - Serenity Blue & Soft Whites */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 27%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 27%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 27%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Serenity Blue as primary */
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 214 84% 94%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Soft romantic tones */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 27%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 345 100% 97%;
+    --accent-foreground: 215 25% 27%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Romantic gold accent */
+    --gold: 45 100% 85%;
+    --gold-foreground: 45 86% 25%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 84% 56%;
+
+    /* Wedding-specific colors */
+    --serenity: 214 84% 56%;
+    --serenity-light: 214 84% 94%;
+    --serenity-dark: 214 84% 46%;
+    --rose-quartz: 345 100% 97%;
+    --champagne: 45 100% 95%;
+    
+    /* Typography and spacing */
+    --font-romantic: 'Dancing Script', 'Playfair Display', serif;
+    --font-elegant: 'Playfair Display', serif;
+    
+    /* Animations */
+    --animation-duration: 0.6s;
+    --animation-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -100,6 +123,142 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-elegant;
+  }
+}
+
+@layer components {
+  /* Romantic Wedding Animations */
+  @keyframes float-petals {
+    0% {
+      transform: translateY(-100vh) rotateZ(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotateZ(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes gentle-sway {
+    0%, 100% {
+      transform: translateX(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateX(10px) rotate(2deg);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes sparkle {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .floating-petals {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .petal {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--accent));
+    border-radius: 50% 0 50% 0;
+    animation: float-petals linear infinite;
+    animation-duration: 8s;
+  }
+
+  .petal:nth-child(odd) {
+    background: hsl(var(--primary-soft));
+    animation-duration: 12s;
+  }
+
+  .gentle-animation {
+    animation: gentle-sway 4s ease-in-out infinite;
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  /* Typography styles */
+  .font-romantic {
+    font-family: var(--font-romantic);
+  }
+
+  .font-elegant {
+    font-family: var(--font-elegant);
+  }
+
+  /* Wedding card styles */
+  .wedding-card {
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--serenity-light)) 100%);
+    border: 1px solid hsl(var(--border));
+    box-shadow: 
+      0 4px 20px -2px hsl(var(--serenity) / 0.1),
+      0 0 0 1px hsl(var(--serenity) / 0.05);
+  }
+
+  /* Button variants */
+  .btn-wedding {
+    background: linear-gradient(135deg, 
+      hsl(var(--serenity)) 0%, 
+      hsl(var(--serenity-dark)) 100%);
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--serenity));
+    transition: all var(--animation-duration) var(--animation-ease);
+  }
+
+  .btn-wedding:hover {
+    background: linear-gradient(135deg, 
+      hsl(var(--serenity-dark)) 0%, 
+      hsl(var(--serenity)) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -4px hsl(var(--serenity) / 0.3);
+  }
+
+  .btn-outline-wedding {
+    background: transparent;
+    color: hsl(var(--serenity));
+    border: 2px solid hsl(var(--serenity));
+    transition: all var(--animation-duration) var(--animation-ease);
+  }
+
+  .btn-outline-wedding:hover {
+    background: hsl(var(--serenity));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -4px hsl(var(--serenity) / 0.3);
   }
 }

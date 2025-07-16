@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					soft: 'hsl(var(--primary-soft))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,7 +62,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Wedding-specific colors
+				serenity: {
+					DEFAULT: 'hsl(var(--serenity))',
+					light: 'hsl(var(--serenity-light))',
+					dark: 'hsl(var(--serenity-dark))'
+				},
+				'rose-quartz': 'hsl(var(--rose-quartz))',
+				champagne: 'hsl(var(--champagne))',
+				gold: {
+					DEFAULT: 'hsl(var(--gold))',
+					foreground: 'hsl(var(--gold-foreground))'
 				}
+			},
+			fontFamily: {
+				romantic: ['Dancing Script', 'Playfair Display', 'serif'],
+				elegant: ['Playfair Display', 'serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
