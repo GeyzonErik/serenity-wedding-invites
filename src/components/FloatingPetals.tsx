@@ -5,11 +5,11 @@ const FloatingPetals = () => {
 
   useEffect(() => {
     const createPetals = () => {
-      const newPetals = Array.from({ length: 25 }, (_, i) => ({
+      const newPetals = Array.from({ length: 35 }, (_, i) => ({
         id: i,
-        left: Math.random() * 100,
-        delay: Math.random() * 12,
-        duration: 8 + Math.random() * 6
+        left: Math.random() * 100, // 0% a 100% da largura da tela
+        delay: Math.random() * 15,
+        duration: 6 + Math.random() * 8
       }));
       setPetals(newPetals);
     };
@@ -21,11 +21,11 @@ const FloatingPetals = () => {
   }, []);
 
   return (
-    <div className="floating-petals">
+    <div className="floating-petals fixed inset-0 pointer-events-none overflow-hidden">
       {petals.map((petal) => (
         <div
           key={petal.id}
-          className="petal"
+          className="petal absolute"
           style={{
             left: `${petal.left}%`,
             animationDelay: `${petal.delay}s`,
