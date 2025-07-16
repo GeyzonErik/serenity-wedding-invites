@@ -1,17 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useRef, useEffect } from "react";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface MusicPlayerProps {
   audioSrc?: string;
   title?: string;
 }
 
-const MusicPlayer = ({ 
-  audioSrc = "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", 
-  title = "Música do Casamento" 
+const MusicPlayer = ({
+  audioSrc = "src/assets/Stephen_Sanchez-Until_I_Found_You.mp3",
+  title = "Música do Casamento",
 }: MusicPlayerProps) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -28,12 +28,22 @@ const MusicPlayer = ({
 
     const setAudioTime = () => setCurrentTime(audio.currentTime);
 
-    audio.addEventListener('loadeddata', setAudioData);
-    audio.addEventListener('timeupdate', setAudioTime);
+    audio.addEventListener("loadeddata", setAudioData);
+    audio.addEventListener("timeupdate", setAudioTime);
+
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch((err) => {
+        console.warn("Autoplay bloqueado pelo navegador:", err);
+        setIsPlaying(false);
+      });
 
     return () => {
-      audio.removeEventListener('loadeddata', setAudioData);
-      audio.removeEventListener('timeupdate', setAudioTime);
+      audio.removeEventListener("loadeddata", setAudioData);
+      audio.removeEventListener("timeupdate", setAudioTime);
     };
   }, []);
 
@@ -60,7 +70,7 @@ const MusicPlayer = ({
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -74,7 +84,7 @@ const MusicPlayer = ({
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
-      
+
       <div className="flex items-center gap-3">
         <Button
           variant="ghost"
@@ -88,14 +98,14 @@ const MusicPlayer = ({
             <Play className="h-4 w-4" />
           )}
         </Button>
-        
+
         <div className="hidden sm:flex flex-col text-xs">
           <span className="font-medium text-foreground/80">{title}</span>
           <span className="text-muted-foreground">
             {formatTime(currentTime)} / {formatTime(duration)}
           </span>
         </div>
-        
+
         <Button
           variant="ghost"
           size="sm"
