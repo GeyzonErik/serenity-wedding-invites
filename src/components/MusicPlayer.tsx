@@ -64,13 +64,16 @@ const MusicPlayer = ({
   };
 
   return (
-    <div className="fixed bottom-6 right-6 bg-card wedding-card rounded-full p-4 shadow-lg border backdrop-blur-sm z-10">
+    <div className="fixed bottom-6 right-6 bg-card wedding-card rounded-full p-4 shadow-lg border backdrop-blur-sm z-50">
       <audio
         ref={audioRef}
         src={audioSrc}
         loop
+        autoPlay
         preload="metadata"
         onEnded={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
       />
       
       <div className="flex items-center gap-3">

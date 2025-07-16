@@ -146,12 +146,12 @@ All colors MUST be HSL.
     }
   }
 
-  @keyframes gentle-sway {
+  @keyframes heart-pulse {
     0%, 100% {
-      transform: translateX(0px) rotate(0deg);
+      transform: scale(1);
     }
     50% {
-      transform: translateX(10px) rotate(2deg);
+      transform: scale(1.1);
     }
   }
 
@@ -198,8 +198,8 @@ All colors MUST be HSL.
     animation-duration: 12s;
   }
 
-  .gentle-animation {
-    animation: gentle-sway 4s ease-in-out infinite;
+  .heart-pulse {
+    animation: heart-pulse 2s ease-in-out infinite;
   }
 
   .fade-in-up {

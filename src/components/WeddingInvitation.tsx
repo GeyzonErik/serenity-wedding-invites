@@ -40,7 +40,7 @@ const WeddingInvitation = () => {
           
           {/* Header with Bible Verse */}
           <div className="text-center mb-16 fade-in-up">
-            <div className="gentle-animation">
+            <div>
               <blockquote className="text-xl md:text-2xl lg:text-3xl font-elegant italic text-foreground/90 leading-relaxed mb-4">
                 "Acima de tudo, porém, revistam-se do amor,<br />
                 que é o elo perfeito."
@@ -52,7 +52,7 @@ const WeddingInvitation = () => {
           </div>
 
           {/* Main Invitation Card */}
-          <Card className="wedding-card rounded-3xl p-8 md:p-12 lg:p-16 mx-auto max-w-3xl mb-12 gentle-animation">
+          <Card className="wedding-card rounded-3xl p-8 md:p-12 lg:p-16 mx-auto max-w-3xl mb-12">
             
             {/* Blessing Text */}
             <div className="text-center mb-8">
@@ -63,7 +63,7 @@ const WeddingInvitation = () => {
 
             {/* Couple Names */}
             <div className="text-center mb-8">
-              <h1 className="font-romantic text-4xl md:text-5xl lg:text-6xl text-serenity mb-4 gentle-animation">
+              <h1 className="font-romantic text-4xl md:text-5xl lg:text-6xl text-serenity mb-4">
                 Larissa <span className="text-gold">&</span> Geyzon
               </h1>
               <p className="text-xl md:text-2xl font-elegant text-foreground/80">
@@ -73,7 +73,7 @@ const WeddingInvitation = () => {
 
             {/* Decorative Heart */}
             <div className="flex justify-center mb-8">
-              <Heart className="w-8 h-8 text-serenity sparkle" fill="currentColor" />
+              <Heart className="w-8 h-8 text-serenity heart-pulse" fill="currentColor" />
             </div>
 
             {/* Event Details */}
