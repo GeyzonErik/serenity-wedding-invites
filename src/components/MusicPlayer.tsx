@@ -8,7 +8,7 @@ interface MusicPlayerProps {
 }
 
 const MusicPlayer = ({
-  audioSrc = "src/assets/Stephen_Sanchez-Until_I_Found_You.mp3",
+  audioSrc = "public/assets/Stephen_Sanchez-Until_I_Found_You.mp3",
   title = "Música do Casamento",
 }: MusicPlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(true);
