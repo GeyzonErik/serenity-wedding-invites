@@ -22,21 +22,17 @@ const FloatingPetals = () => {
 
   return (
     <div className="floating-petals">
-      {petals.map((petal) => {
-        // Concentrar pétalas mais no meio (30-70% da tela)
-        const concentratedLeft = 30 + (petal.left * 0.4);
-        return (
-          <div
-            key={petal.id}
-            className="petal"
-            style={{
-              left: `${concentratedLeft}%`,
-              animationDelay: `${petal.delay}s`,
-              animationDuration: `${petal.duration}s`
-            }}
-          />
-        );
-      })}
+      {petals.map((petal) => (
+        <div
+          key={petal.id}
+          className="petal"
+          style={{
+            left: `${petal.left}%`,
+            animationDelay: `${petal.delay}s`,
+            animationDuration: `${petal.duration}s`
+          }}
+        />
+      ))}
     </div>
   );
 };

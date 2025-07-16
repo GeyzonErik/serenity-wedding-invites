@@ -69,7 +69,6 @@ const MusicPlayer = ({
         ref={audioRef}
         src={audioSrc}
         loop
-        autoPlay
         preload="metadata"
         onEnded={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
